@@ -1,4 +1,4 @@
 #!/bin/bash
 # This script changes the working directory to the user's home directory
-cd ~
+cd /c/Users/H\ I\ R\ E\ N_Digital\ s
 
