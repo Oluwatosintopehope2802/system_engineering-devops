@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 # This script stops the 4-to_infinity_and_beyond process without using kill or killall
 
-# Find the PID of the infinite script
+# Get the PID of the script
 PID=$(pgrep -f 4-to_infinity_and_beyond)
 
-# Quietly terminate it by closing its stdin
-if [ -n "$PID" ]; then
-  echo SIGTERM > /proc/"$PID"/attr/current 2>/dev/null || \
-  (exec 3>/proc/"$PID"/fd/0 && exec 3>&-)
+# If PID is not found, exit with status 2
+if [ -z "$PID" ]; then
+  exit 2
 fi
+
+# Try stopping it without using kill/killall
+echo SIGTERM > /proc/"$PID"/attr/current 2>/dev/null || \
+(exec 3>/proc/"$PID"/fd/0 && exec 3>&-)
