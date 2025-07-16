@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
-# A script that displays a list of all running processes in a user-oriented format including hierarchy
+# A Bash script that displays all running processes
 
-ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest
+F' > 1-list_your_processes
+#!/usr/bin/env bash
+# A Bash script that lists all running processes in a user-friendly, hierarchical format
 
+ps -eo user,pid,ppid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd --forest
+EOF
+cat << 'EOF' > 1-list_your_processes
+#!/usr/bin/env bash
+# A Bash script that lists all running processes in a user-friendly, hierarchical format
+
+ps -eo user,pid,ppid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd --forest
+EOF
+
+cat << 'EOF' > 1-list_your_processes
+ps aux
