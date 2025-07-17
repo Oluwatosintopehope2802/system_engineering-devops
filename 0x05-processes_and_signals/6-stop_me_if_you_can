@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
-# Script that stops 4-to_infinity_and_beyond process without using kill or killall
+# Stops the 4-to_infinity_and_beyond process without using kill or killall
 
-PID=$(pgrep -f "4-to_infinity_and_beyond")
-
-if [ -z "$PID" ]; then
-  exit 2
-fi
-
-# Attempt to stop the process by sending SIGTERM using /proc interface
-# Method: Close the standard input of the process (sometimes works in ALX env)
-(exec 3>/proc/"$PID"/fd/0 && exec 3>&-)
+pkill -f 4-to_infinity_and_beyond
